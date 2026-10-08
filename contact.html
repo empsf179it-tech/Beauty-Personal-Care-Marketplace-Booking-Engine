@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Let's Create Better Beauty Experiences</title>
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <style>
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: var(--transition-fast);
+        }
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--accent-color);
+        }
+        .form-label {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: var(--transition-fast);
+        }
+        .form-control:focus ~ .form-label,
+        .form-control:valid ~ .form-label {
+            top: -1rem;
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 0;
+        }
+        .faq-question {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .faq-answer {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+            opacity: 0.7;
+        }
+        .faq-answer.open {
+            height: auto;
+            margin-top: 1rem;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor">View</div>
+
+    <nav class="navbar">
+        <div class="nav-brand"><img src="images/logo.svg" alt="Logo" style="height: 32px; width: auto; margin-right: 12px; border-radius: 50%;">Marketplace.</div>
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="discover.html" class="nav-link">Discover</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="providers.html" class="nav-link">Providers</a>
+            <a href="experiences.html" class="nav-link">Experiences</a>
+            <a href="offers.html" class="nav-link">Offers</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">◐</button>
+            <button class="btn-primary book-cta">Book a Service</button>
+        </div>
+    </nav>
+
+    <section style="padding-top: 10rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 style="font-size: 4rem; margin-bottom: 2rem;">Let's Create<br>Better Beauty<br>Experiences.</h1>
+                    <p style="opacity: 0.7; margin-bottom: 4rem;">For general inquiries, partnership opportunities, or assistance with an existing booking, please reach out to our concierge team.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 class="text-mono" style="margin-bottom: 0.5rem; color: var(--accent-color);">Concierge Desk</h4>
+                        <p>hello@marketplace-demo.com<br>+1 (800) 555-0199</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-5 offset-md-1">
+                    <form id="contact-form" style="background: var(--bg-secondary); padding: 3rem; border-radius: var(--radius-lg); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" required>
+                            <label class="form-label" for="name">Full Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" required>
+                            <label class="form-label" for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inquiry" required>
+                            <label class="form-label" for="inquiry">Inquiry Type</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" rows="3" required></textarea>
+                            <label class="form-label" style="top: 0;" for="message">Message</label>
+                        </div>
+                        <p style="font-size: 0.8rem; opacity: 0.5; margin-bottom: 2rem;">*Actual message delivery requires backend integration. This is a frontend demo.</p>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: var(--bg-tertiary); padding: 8rem 0;">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="heading-modern" style="text-align: center; margin-bottom: 4rem;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>01. How do I modify an existing booking?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can modify your booking through the confirmation email link, or by contacting our concierge desk directly at least 24 hours prior to your appointment time.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>02. What is your cancellation policy?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We require a minimum 24-hour notice for all cancellations. Late cancellations or no-shows may be subject to a fee equal to the required deposit.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>03. Can I request a specific provider?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. Our booking concierge allows you to browse availability by specific providers or select "Any Available" for maximum flexibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand"><img src="images/logo.svg" alt="Logo" style="height: 32px; width: auto; margin-right: 12px; border-radius: 50%;">Marketplace.</div>
+                <p style="opacity: 0.7; max-width: 300px; font-size: 0.9rem; margin-bottom: 1.5rem;">A luxury beauty marketplace merged with a modern booking concierge and editorial lifestyle platform.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul>
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="providers.html">Providers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Beauty</h4>
+                <ul>
+                    <li><a href="services.html">Hair & Skin</a></li>
+                    <li><a href="services.html">Nails & Spa</a></li>
+                    <li><a href="services.html">Wellness</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms & Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> Marketplace. All rights reserved.</span>
+            <span>Frontend Demo Implementation</span>
+        </div>
+        
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+    </footer>
+
+    <!-- Booking Concierge Modal -->
+    <div id="booking-modal" class="booking-modal">
+        <div class="booking-content">
+            <!-- Left Side: Steps -->
+            <div class="booking-left">
+                <button id="modal-close" class="modal-close">&times;</button>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 2rem; color: var(--accent-color);">
+                    CONCIERGE BOOKING SYSTEM
+                </div>
+
+                <!-- Step 1: Select Service -->
+                <div id="step-1" class="step-content active">
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Select Service</h2>
+                    <div class="service-list">
+                        <div class="service-item" data-price="2500">
+                            <div>
+                                <h4>Signature Facial</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">60 min</span>
+                            </div>
+                            <div class="price">₹2,500</div>
+                        </div>
+                        <div class="service-item" data-price="4000">
+                            <div>
+                                <h4>Advanced Deep Cleansing</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">90 min</span>
+                            </div>
+                            <div class="price">₹4,000</div>
+                        </div>
+                        <div class="service-item" data-price="1500">
+                            <div>
+                                <h4>Luxury Manicure</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">45 min</span>
+                            </div>
+                            <div class="price">₹1,500</div>
+                        </div>
+                        <div class="service-item" data-price="8000">
+                            <div>
+                                <h4>Bridal Makeup Trial</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">120 min</span>
+                            </div>
+                            <div class="price">₹8,000</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary next-step" style="margin-top: 3rem; width: 100%;">Continue to Time & Date</button>
+                </div>
+
+                <!-- Step 2: Select Date & Time -->
+                <div id="step-2" class="step-content">
+                    <button class="prev-step" style="background: none; border: none; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; margin-bottom: 2rem;">← Back</button>
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Select Date & Time</h2>
+                    <p class="text-mono" style="opacity: 0.6; margin-bottom: 1rem;">Demo Availability for Upcoming Days</p>
+                    
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; overflow-x: auto; padding-bottom: 1rem;">
+                        <div style="padding: 1rem; border: 1px solid var(--accent-color); border-radius: var(--radius-sm); min-width: 80px; text-align: center; cursor: pointer;">
+                            <strong>Fri</strong><br>12
+                        </div>
+                        <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); min-width: 80px; text-align: center; cursor: pointer;">
+                            <strong>Sat</strong><br>13
+                        </div>
+                    </div>
+
+                    <div class="time-slots">
+                        <div class="time-slot">09:00 AM</div>
+                        <div class="time-slot">10:30 AM</div>
+                        <div class="time-slot">12:00 PM</div>
+                        <div class="time-slot">02:30 PM</div>
+                        <div class="time-slot">04:00 PM</div>
+                    </div>
+
+                    <button class="btn-primary next-step" style="margin-top: 3rem; width: 100%;">Review Quote</button>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div id="step-3" class="step-content">
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Your Beauty Experience Is Ready</h2>
+                    <p>This is a frontend demo and no real reservation was created.</p>
+                    <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                        <p class="text-mono" style="margin-bottom: 1rem;">BOOKING REF: DEMO-8493</p>
+                        <h3 style="margin-bottom: 0.5rem;">Service Reserved</h3>
+                        <p style="opacity: 0.7;">You will receive a confirmation email shortly.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Right Side: Summary -->
+            <div class="booking-right">
+                <h3 class="heading-modern" style="font-size: 1.2rem; margin-bottom: 2rem;">Summary</h3>
+                
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Service</span>
+                        <span id="booking-service" class="text-mono" style="font-weight: bold;">--</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Provider</span>
+                        <span class="text-mono">Any Available</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Date & Time</span>
+                        <span class="text-mono">--</span>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; margin-top: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>Estimated Total</span>
+                        <span id="booking-total" class="text-mono" style="font-size: 1.5rem; color: var(--accent-color);">₹0</span>
+                    </div>
+                    <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem;">*Sample/demo pricing. Deposit may be required upon real booking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Frontend Demo: Form validation successful. Backend integration required to send data.');
+            e.target.reset();
+        });
+        
+        function toggleFaq(el) {
+            el.classList.toggle('active');
+            const answer = el.nextElementSibling;
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+            } else {
+                answer.classList.add('open');
+            }
+        }
+    </script>
+    <script src="assets/js/main.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Personal Care Marketplace & Booking Engine</title>
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <meta name="description" content="Discover exceptional beauty and personal-care experiences, compare services, and find the perfect time for your next appointment.">
+    
+    <!-- Bootstrap Utilities (Only Grid/Layout as requested) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor">Book</div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand"><img src="images/logo.svg" alt="Logo" style="height: 32px; width: auto; margin-right: 12px; border-radius: 50%;">Marketplace.</div>
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="discover.html" class="nav-link">Discover</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="providers.html" class="nav-link">Providers</a>
+            <a href="experiences.html" class="nav-link">Experiences</a>
+            <a href="offers.html" class="nav-link">Offers</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">◐</button>
+            <button class="btn-primary book-cta">Book a Service</button>
+        </div>
+    </nav>
+
+    <!-- SECTION 01: Cinematic Hero -->
+    <section class="hero-section">
+        <img src="images/image-1.png" alt="Luxury Beauty Experience" class="hero-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span>Beauty,</span><br>
+                <span style="font-style: italic;">Curated Around You.</span>
+            </h1>
+            <p class="hero-subtitle">Discover exceptional beauty and personal-care experiences, compare services, and find the perfect time for your next appointment.</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary book-cta">Book a Service</button>
+                <a href="experiences.html" class="btn-primary" style="background: transparent; border: 1px solid #fff;">Explore Experiences</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: Beauty Discovery Orbit -->
+    <section class="orbit-section" style="background-color: var(--bg-tertiary);">
+        <div class="container">
+            <div class="orbit-container">
+                
+                <div class="orbit-circle">
+                    <!-- Central Hub -->
+                    <div class="orbit-center">
+                        <img id="orbit-img" src="images/image-1.png" alt="Discover">
+                        <div class="orbit-center-content">
+                            <h2 id="orbit-title">Discover</h2>
+                            <p id="orbit-desc" class="text-mono">Hover a category to explore.</p>
+                            <a href="services.html" class="btn-primary" style="margin-top: 1.5rem; font-size: 0.7rem;">Explore Collection</a>
+                        </div>
+                    </div>
+
+                    <!-- Orbiting Items -->
+                    <div class="orbit-item" style="--angle: 0deg;" onmouseover="updateOrbit('Hair', 'Master stylists bringing your vision to life.', 'images/image-2.png')">
+                        <span class="orbit-label">Hair</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 45deg;" onmouseover="updateOrbit('Skin', 'Advanced facials and clinical treatments.', 'images/image-3.png')">
+                        <span class="orbit-label">Skin</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 90deg;" onmouseover="updateOrbit('Nails', 'Luxury manicures and bespoke nail art.', 'images/image-4.png')">
+                        <span class="orbit-label">Nails</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 135deg;" onmouseover="updateOrbit('Makeup', 'Flawless artistry for your defining moments.', 'images/image-5.png')">
+                        <span class="orbit-label">Makeup</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 180deg;" onmouseover="updateOrbit('Spa', 'Immersive environments for total relaxation.', 'images/image-6.png')">
+                        <span class="orbit-label">Spa</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 225deg;" onmouseover="updateOrbit('Wellness', 'Holistic therapies and energy alignment.', 'images/image-7.png')">
+                        <span class="orbit-label">Wellness</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 270deg;" onmouseover="updateOrbit('Massage', 'Deep tissue and restorative bodywork.', 'images/image-8.png')">
+                        <span class="orbit-label">Massage</span>
+                    </div>
+                    <div class="orbit-item" style="--angle: 315deg;" onmouseover="updateOrbit('Brows', 'Precision shaping and lamination.', 'images/image-9.png')">
+                        <span class="orbit-label">Brows</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            function updateOrbit(title, desc, img) {
+                document.getElementById('orbit-title').innerText = title;
+                document.getElementById('orbit-desc').innerText = desc;
+                const imgEl = document.getElementById('orbit-img');
+                imgEl.style.opacity = '0';
+                setTimeout(() => {
+                    imgEl.src = img;
+                    imgEl.style.opacity = '1';
+                }, 200);
+            }
+        </script>
+    </section>
+
+    <!-- SECTION 03: Featured Experiences -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="heading-modern mb-5">Curated Experiences</h2>
+            <div class="editorial-grid">
+                <div class="editorial-card large book-cta" style="cursor: pointer;">
+                    <img src="images/image-2.png" alt="The Glow Edit">
+                    <div class="editorial-content">
+                        <div class="editorial-category">Skincare + Hydration</div>
+                        <h3>The Glow Edit</h3>
+                        <p class="text-mono" style="margin-top: 1rem;">Starting ₹3,500 | 90 Min</p>
+                    </div>
+                </div>
+                <div class="editorial-card book-cta" style="cursor: pointer;">
+                    <img src="images/image-3.png" alt="Bridal Reset">
+                    <div class="editorial-content">
+                        <div class="editorial-category">Makeup + Hair</div>
+                        <h3>Bridal Reset</h3>
+                        <p class="text-mono">₹12,000 | 180 Min</p>
+                    </div>
+                </div>
+                <div class="editorial-card book-cta" style="cursor: pointer;">
+                    <img src="images/image-4.png" alt="Deep Relaxation">
+                    <div class="editorial-content">
+                        <div class="editorial-category">Wellness + Massage</div>
+                        <h3>Deep Relaxation</h3>
+                        <p class="text-mono">₹4,000 | 60 Min</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: Find Your Beauty Match -->
+    <section style="background-color: var(--bg-tertiary); text-align: center; padding: 10rem 0;">
+        <style>
+            .mood-card {
+                display: flex;
+                align-items: center;
+                background: var(--bg-secondary);
+                border-radius: 20px;
+                padding: 1.5rem;
+                gap: 2rem;
+                text-align: left;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+                transition: transform 0.4s ease;
+            }
+            .mood-card:hover {
+                transform: translateY(-10px);
+            }
+            .mood-card img {
+                width: 140px;
+                height: 140px;
+                border-radius: 12px;
+                object-fit: cover;
+            }
+            .mood-card-info {
+                flex: 1;
+            }
+            .mood-card-info h3 {
+                font-family: var(--font-heading);
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .mood-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            @media (max-width: 850px) {
+                .mood-card { flex-direction: column; text-align: center; }
+                .mood-card img { width: 100%; height: 200px; }
+            }
+            @media (max-width: 480px) {
+                .mood-grid { grid-template-columns: 1fr; }
+            }
+        </style>
+        <div class="container">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">What Are You Looking For Today?</h2>
+            <div id="mood-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                <button class="btn-primary mood-btn active" onclick="setMood('relax')" style="background: var(--accent-color); color: #fff; border: 1px solid var(--accent-color);">Relax</button>
+                <button class="btn-primary mood-btn" onclick="setMood('refresh')" style="background: transparent; color: var(--text-primary); border: 1px solid var(--border-color);">Refresh</button>
+                <button class="btn-primary mood-btn" onclick="setMood('transform')" style="background: transparent; color: var(--text-primary); border: 1px solid var(--border-color);">Transform</button>
+                <button class="btn-primary mood-btn" onclick="setMood('prepare')" style="background: transparent; color: var(--text-primary); border: 1px solid var(--border-color);">Prepare</button>
+            </div>
+            
+            <div id="mood-content" style="transition: opacity 0.4s ease; min-height: 250px;">
+                <p class="text-mono" style="opacity: 0.6;">Select a mood to discover curated service recommendations.</p>
+            </div>
+        </div>
+        <script>
+            const moodData = {
+                'relax': {
+                    desc: "Unwind and de-stress with our deeply restorative treatments.",
+                    services: [
+                        { title: "Deep Tissue Massage", time: "60 Min", price: "₹3,500", img: "images/image-1.png" },
+                        { title: "Aromatherapy Spa", time: "90 Min", price: "₹5,000", img: "images/image-2.png" }
+                    ]
+                },
+                'refresh': {
+                    desc: "Revitalize your skin and hair with our signature refreshing rituals.",
+                    services: [
+                        { title: "Signature Facial", time: "45 Min", price: "₹2,500", img: "images/image-3.png" },
+                        { title: "Scalp Therapy", time: "30 Min", price: "₹1,500", img: "images/image-4.png" }
+                    ]
+                },
+                'transform': {
+                    desc: "Completely reinvent your look with our expert styling team.",
+                    services: [
+                        { title: "Color Correction", time: "180 Min", price: "₹8,500", img: "images/image-5.png" },
+                        { title: "Complete Makeover", time: "120 Min", price: "₹6,000", img: "images/image-6.png" }
+                    ]
+                },
+                'prepare': {
+                    desc: "Get ready for your special moment with flawless precision.",
+                    services: [
+                        { title: "Bridal Consultation", time: "60 Min", price: "₹3,000", img: "images/image-7.png" },
+                        { title: "Event Styling", time: "90 Min", price: "₹4,500", img: "images/image-8.png" }
+                    ]
+                }
+            };
+
+            function setMood(mood) {
+                const buttons = document.querySelectorAll('.mood-btn');
+                buttons.forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = 'var(--text-primary)';
+                    btn.style.border = '1px solid var(--border-color)';
+                });
+                
+                const activeBtn = Array.from(buttons).find(btn => btn.innerText.toLowerCase() === mood);
+                if(activeBtn) {
+                    activeBtn.style.background = 'var(--accent-color)';
+                    activeBtn.style.color = '#fff';
+                    activeBtn.style.border = '1px solid var(--accent-color)';
+                }
+
+                const contentDiv = document.getElementById('mood-content');
+                contentDiv.style.opacity = '0';
+                
+                setTimeout(() => {
+                    const data = moodData[mood];
+                    let html = '<p class="text-mono" style="opacity: 0.8; font-size: 1.1rem; margin-bottom: 3rem;">' + data.desc + '</p>';
+                    html += '<div class="mood-grid">';
+                    
+                    data.services.forEach(s => {
+                        html += `
+                        <div class="mood-card">
+                            <img src="${s.img}" alt="${s.title}">
+                            <div class="mood-card-info">
+                                <h3>${s.title}</h3>
+                                <p class="text-mono" style="opacity: 0.6; margin-bottom: 1.5rem;">${s.time} | ${s.price}</p>
+                                <button class="btn-primary book-cta" style="padding: 0.6rem 2rem; font-size: 0.75rem;">Book Now</button>
+                            </div>
+                        </div>`;
+                    });
+                    
+                    html += '</div>';
+                    contentDiv.innerHTML = html;
+                    
+                    // Re-attach booking modal triggers and cursor
+                    const modal = document.getElementById('booking-modal');
+                    const cursor = document.getElementById('custom-cursor');
+                    contentDiv.querySelectorAll('.book-cta').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if(modal) {
+                                modal.classList.add('active');
+                                document.body.style.overflow = 'hidden';
+                            }
+                        });
+                        if (cursor) {
+                            btn.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                            btn.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+                        }
+                    });
+                    
+                    contentDiv.style.opacity = '1';
+                }, 300);
+            }
+
+            // Init default mood
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => setMood('relax'), 100);
+            });
+        </script>
+    </section>
+
+    <!-- SECTION 05: Live-style Availability -->
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <h2 class="heading-modern">Find a Time That Fits You.</h2>
+                    <p style="margin-top: 1rem; opacity: 0.7;">DEMO AVAILABILITY: Choose an upcoming slot to initiate the booking concierge instantly.</p>
+                </div>
+                <div class="col-md-7">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--accent-color); background: var(--bg-secondary); box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;" class="book-cta">
+                            <div>
+                                <h4 class="text-mono">Today, 04:30 PM</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.6;">2 Providers Available</span>
+                            </div>
+                            <span style="color: var(--accent-color);">Book</span>
+                        </div>
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--border-color); background: var(--bg-secondary); display: flex; justify-content: space-between; align-items: center;" class="book-cta">
+                            <div>
+                                <h4 class="text-mono">Tomorrow, 10:00 AM</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.6;">4 Providers Available</span>
+                            </div>
+                            <span>Book</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 06: Provider Stories -->
+    <section class="provider-scroll-container" style="background-color: var(--brand-plum); color: #fff; padding-top: 8rem; padding-bottom: 8rem;">
+        <div class="container" style="margin-bottom: 4rem; position: relative;">
+            <h2 style="font-size: 3rem;">Meet the Masters</h2>
+        </div>
+        
+        <button class="scroll-btn left" onclick="document.querySelector('.provider-strip').scrollBy({left: -600, behavior: 'smooth'})" aria-label="Scroll left">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="scroll-btn right" onclick="document.querySelector('.provider-strip').scrollBy({left: 600, behavior: 'smooth'})" aria-label="Scroll right">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="provider-strip">
+            <div class="provider-portrait book-cta">
+                <img src="images/image-10.png" alt="Provider">
+                <div class="provider-info" style="color: var(--text-primary);">
+                    <h3>Elena Rossi</h3>
+                    <p class="text-mono">Senior Hair Stylist | 12 Yrs Exp</p>
+                </div>
+            </div>
+            <div class="provider-portrait book-cta">
+                <img src="images/image-11.png" alt="Provider">
+                <div class="provider-info" style="color: var(--text-primary);">
+                    <h3>Sarah Chen</h3>
+                    <p class="text-mono">Aesthetician | 8 Yrs Exp</p>
+                </div>
+            </div>
+            <div class="provider-portrait book-cta">
+                <img src="images/image-12.png" alt="Provider">
+                <div class="provider-info" style="color: var(--text-primary);">
+                    <h3>David Miller</h3>
+                    <p class="text-mono">Massage Therapist | 15 Yrs Exp</p>
+                </div>
+            </div>
+            <div class="provider-portrait book-cta">
+                <img src="images/image-13.png" alt="Provider">
+                <div class="provider-info" style="color: var(--text-primary);">
+                    <h3>Maya Patel</h3>
+                    <p class="text-mono">Makeup Artist | 6 Yrs Exp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: Final Booking CTA -->
+    <section style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;">
+        <div style="max-width: 800px; padding: 2rem;">
+            <h2 style="font-size: 4rem; margin-bottom: 1.5rem;">Your Next Beauty Experience Starts Here.</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.8;">Find a service, choose your moment, and create an experience that feels made for you.</p>
+            <button class="btn-primary book-cta" style="padding: 1.5rem 4rem; font-size: 1.2rem;">Book a Service</button>
+        </div>
+    </section>
+
+    <!-- Booking Concierge Modal -->
+    <div id="booking-modal" class="booking-modal">
+        <div class="booking-content">
+            <!-- Left Side: Steps -->
+            <div class="booking-left">
+                <button id="modal-close" class="modal-close">&times;</button>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 2rem; color: var(--accent-color);">
+                    CONCIERGE BOOKING SYSTEM
+                </div>
+
+                <!-- Step 1: Select Service -->
+                <div id="step-1" class="step-content active">
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Select Service</h2>
+                    <div class="service-list">
+                        <div class="service-item" data-price="2500">
+                            <div>
+                                <h4>Signature Facial</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">60 min</span>
+                            </div>
+                            <div class="price">₹2,500</div>
+                        </div>
+                        <div class="service-item" data-price="4000">
+                            <div>
+                                <h4>Advanced Deep Cleansing</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">90 min</span>
+                            </div>
+                            <div class="price">₹4,000</div>
+                        </div>
+                        <div class="service-item" data-price="1500">
+                            <div>
+                                <h4>Luxury Manicure</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">45 min</span>
+                            </div>
+                            <div class="price">₹1,500</div>
+                        </div>
+                        <div class="service-item" data-price="8000">
+                            <div>
+                                <h4>Bridal Makeup Trial</h4>
+                                <span style="font-size: 0.8rem; opacity: 0.7;">120 min</span>
+                            </div>
+                            <div class="price">₹8,000</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary next-step" style="margin-top: 3rem; width: 100%;">Continue to Time & Date</button>
+                </div>
+
+                <!-- Step 2: Select Date & Time -->
+                <div id="step-2" class="step-content">
+                    <button class="prev-step" style="background: none; border: none; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; margin-bottom: 2rem;">← Back</button>
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Select Date & Time</h2>
+                    <p class="text-mono" style="opacity: 0.6; margin-bottom: 1rem;">Demo Availability for Upcoming Days</p>
+                    
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem; overflow-x: auto; padding-bottom: 1rem;">
+                        <div style="padding: 1rem; border: 1px solid var(--accent-color); border-radius: var(--radius-sm); min-width: 80px; text-align: center; cursor: pointer;">
+                            <strong>Fri</strong><br>12
+                        </div>
+                        <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); min-width: 80px; text-align: center; cursor: pointer;">
+                            <strong>Sat</strong><br>13
+                        </div>
+                    </div>
+
+                    <div class="time-slots">
+                        <div class="time-slot">09:00 AM</div>
+                        <div class="time-slot">10:30 AM</div>
+                        <div class="time-slot">12:00 PM</div>
+                        <div class="time-slot">02:30 PM</div>
+                        <div class="time-slot">04:00 PM</div>
+                    </div>
+
+                    <button class="btn-primary next-step" style="margin-top: 3rem; width: 100%;">Review Quote</button>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div id="step-3" class="step-content">
+                    <h2 class="heading-modern" style="margin-bottom: 2rem;">Your Beauty Experience Is Ready</h2>
+                    <p>This is a frontend demo and no real reservation was created.</p>
+                    <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                        <p class="text-mono" style="margin-bottom: 1rem;">BOOKING REF: DEMO-8493</p>
+                        <h3 style="margin-bottom: 0.5rem;">Service Reserved</h3>
+                        <p style="opacity: 0.7;">You will receive a confirmation email shortly.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Right Side: Summary -->
+            <div class="booking-right">
+                <h3 class="heading-modern" style="font-size: 1.2rem; margin-bottom: 2rem;">Summary</h3>
+                
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Service</span>
+                        <span id="booking-service" class="text-mono" style="font-weight: bold;">--</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Provider</span>
+                        <span class="text-mono">Any Available</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <span>Date & Time</span>
+                        <span class="text-mono">--</span>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; margin-top: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>Estimated Total</span>
+                        <span id="booking-total" class="text-mono" style="font-size: 1.5rem; color: var(--accent-color);">₹0</span>
+                    </div>
+                    <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem;">*Sample/demo pricing. Deposit may be required upon real booking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand"><img src="images/logo.svg" alt="Logo" style="height: 32px; width: auto; margin-right: 12px; border-radius: 50%;">Marketplace.</div>
+                <p style="opacity: 0.7; max-width: 300px; font-size: 0.9rem; margin-bottom: 1.5rem;">A luxury beauty marketplace merged with a modern booking concierge and editorial lifestyle platform.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul>
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="providers.html">Providers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Beauty</h4>
+                <ul>
+                    <li><a href="services.html">Hair & Skin</a></li>
+                    <li><a href="services.html">Nails & Spa</a></li>
+                    <li><a href="services.html">Wellness</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms & Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> Marketplace. All rights reserved.</span>
+            <span>Frontend Demo Implementation</span>
+        </div>
+        
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+    </footer>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js?v=2"></script>
+</body>
+</html>
