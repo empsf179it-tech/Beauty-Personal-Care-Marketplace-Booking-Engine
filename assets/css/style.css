@@ -434,9 +434,10 @@ section {
     transform: rotate(var(--angle)) translate(130px) rotate(calc(var(--angle) * -1)) scale(1.1);
   }
   .orbit-label { font-size: 0.55rem; }
-  .orbit-center-content h2 { font-size: 1.3rem; margin-bottom: 0.2rem; }
-  .orbit-center-content p { font-size: 0.75rem; }
-  .orbit-center-content .btn-primary { padding: 0.4rem 1rem; margin-top: 0.5rem !important; }
+  .orbit-center-content { padding: 1rem; }
+  .orbit-center-content h2 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+  .orbit-center-content p { font-size: 0.65rem; margin-bottom: 0; line-height: 1.2; }
+  .orbit-center-content .btn-primary { padding: 0.3rem 0.8rem; margin-top: 0.4rem !important; font-size: 0.55rem !important; }
 }
 
 /* Featured Experiences */
