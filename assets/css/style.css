@@ -189,10 +189,22 @@ a {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
 }
 .btn-primary:hover {
   background-color: var(--accent-hover);
   transform: translateY(-2px);
+}
+
+.final-cta-btn {
+  padding: 1.5rem 4rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .theme-toggle {
@@ -842,6 +854,23 @@ footer {
     height: 350px;
     width: 100%;
   }
+  .booking-left {
+    padding: 1.5rem 1rem;
+  }
+  .booking-right {
+    padding: 1.5rem 1rem;
+  }
+  .btn-primary {
+    padding: 0.75rem 0.8rem;
+    font-size: clamp(0.7rem, 3vw, 0.78rem);
+    letter-spacing: 0.3px;
+  }
+  .final-cta-btn {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    max-width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .footer-grid {
@@ -883,6 +912,32 @@ footer {
     position: static !important;
     transform: none !important;
     margin: 0;
+  }
+  .booking-content {
+    width: 95%;
+    max-width: 95%;
+  }
+  .booking-left {
+    padding: 2rem 1.25rem;
+  }
+  .booking-right {
+    padding: 2rem 1.25rem;
+  }
+  .btn-primary {
+    padding: 0.8rem 1rem;
+    font-size: clamp(0.72rem, 3.2vw, 0.82rem);
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .final-cta-btn {
+    padding: 1rem 2.2rem;
+    font-size: 1rem;
+    white-space: nowrap;
   }
 }
 
